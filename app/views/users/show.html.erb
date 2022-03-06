@@ -7,7 +7,7 @@
       </div>
       <%= render "books/new" %>
     </div>
-    
+
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
@@ -19,9 +19,15 @@
             <th colspan="3"></th>
           </tr>
         </thead>
+        <% @books.each do |book| %>
         <tbody>
-          
+          <tr>
+            <td>画像</td>
+            <td><%= book.title %></td>
+            <td><%= book.body %></td>
+          </tr>
         </tbody>
+        <% end %>
       </table>
     </div>
   </div>
