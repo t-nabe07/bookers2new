@@ -1,0 +1,19 @@
+<h2>User info</h2>
+<%# if attachment_image_tag.representable? %>
+  <%= attachment_image_tag @user, :profile_image, :fill,100, 100, format: 'jpeg' %>
+<%# else %>
+  <%#= image_tag "person.jpg",size: '100x100' %>
+<%# end %>
+<table class="table">
+  <tbody>
+    <tr></tr>
+    <tr>
+      <th>name</th>
+      <th><%= @user.name %></th>
+    </tr>
+    <tr>
+      <th>introduction</th>
+      <th><%= @user.introduction %></th>
+    </tr>
+  </tbody>
+</table>
