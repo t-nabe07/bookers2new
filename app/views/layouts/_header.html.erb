@@ -11,8 +11,8 @@
         <ul class="navbar-nav ml-auto">
         <% if user_signed_in? %>
           <li class="nav-item"><a class="fas fa-home nav-link text-light" href="/">Home</a></li>
-          <li class="nav-item"><a class="fas fa-users nav-link text-light" href="homes/about">Users</a></li>
-          <li class="nav-item"><a class="fas fa-book-open nav-link text-light">Books</a></li>
+          <li class="nav-item"><a class="fas fa-users nav-link text-light" href="/users">Users</a></li>
+          <li class="nav-item"><a class="fas fa-book-open nav-link text-light" href="/books">Books</a></li>
           <li class="nav-item"><a class="fas fa-sign-out-alt nav-link text-light" rel="nofollow" data-method="delete" href="/users/sign_out">Log out</a></li>
         <% else %>
           <li class="nav-item"><a class="fas fa-home nav-link text-light" href="/">Home</a></li>
