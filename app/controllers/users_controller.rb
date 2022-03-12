@@ -3,7 +3,7 @@ class UsersController < ApplicationController
   def show
     @new_book = Book.new
     @user = User.find(params[:id])
-    @books = Book.all
+    @books = @user.books
   end
 
   def edit
@@ -17,6 +17,9 @@ class UsersController < ApplicationController
   end
 
   def index
+    @users = User.all
+    @user = current_user
+    @new_book = Book.new
   end
 
   private
