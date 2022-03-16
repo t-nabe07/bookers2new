@@ -3,9 +3,15 @@ class BooksController < ApplicationController
   def create
     @book = Book.new(book_params)
     @book.user_id = current_user.id
-    @book.save
-    flash[:notice] = '投稿が完了しました'
-    redirect_to book_path(@book.id)
+    if @book.save
+      flash[:notice] = '投稿が完了しました'
+      redirect_to book_path(@book.id)
+    else
+      @new_book = Book.new
+      @user = current_user
+      @books = Book.all
+      render :index
+    end
   end
 
   def edit
@@ -13,18 +19,24 @@ class BooksController < ApplicationController
   end
 
   def update
-    book = Book.find(params[:id])
-    book.update(book_params)
-    redirect_to book_path(book.id)
+    @book = Book.find(params[:id])
+    if @book.update(book_params)
+      flash[:notice] = '編集が完了しました'
+      redirect_to book_path(@book.id)
+    else
+      render :edit
+    end
   end
 
   def index
+    @book = Book.new
     @new_book = Book.new
     @user = current_user
     @books = Book.all
   end
 
   def show
+    @new_book = Book.new
     @user = current_user
     @book = Book.find(params[:id])
   end
