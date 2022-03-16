@@ -16,6 +16,15 @@ class BooksController < ApplicationController
 
   def edit
     @book = Book.find(params[:id])
+    if @book.user == current_user
+      render :edit
+    else
+      @book = Book.new
+      @new_book = Book.new
+      @user = current_user
+      @books = Book.all
+      render :index
+    end
   end
 
   def update

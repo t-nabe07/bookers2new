@@ -8,6 +8,14 @@ class UsersController < ApplicationController
 
   def edit
     @user = User.find(params[:id])
+    if @user == current_user
+      render :edit
+    else
+      @new_book = Book.new
+      @user = User.find(params[:id])
+      @books = @user.books
+      render :show
+    end
   end
 
   def update
