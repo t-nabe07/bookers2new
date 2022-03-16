@@ -1,6 +1,6 @@
 <div class="container">
   <% if @book.errors.any? %>
-    <%= @book.errors.count %>件のエラーが発生しました<br>
+    <h3><%= @book.errors.count %> error prohibited this obj from being saved: </h3>
     <% @book.errors.full_messages.each do |message| %>
       <%= message %>
     <% end %>
@@ -21,8 +21,8 @@
          <%= f.submit "Update Book",class:"btn btn-success" %>
       </div>
       <% end %>
-      <a class="show"><%= link_to "show",book_path(@book.id) %></a>
-      <a class="back"><%= link_to "Back",book_path(@book.id) %></a>
+      <a class="Show"><%= link_to "Show",book_path(@book.id) %></a>
+      <a class="Back"><%= link_to "Back",books_path %></a>
     </div>
   </div>
 </div>
