@@ -45,7 +45,7 @@
 
       <table class="table">
         <% if @book.comments.present? %>
-          <%= @book.comments.each do |comment| %>
+          <% @book.comments.each do |comment| %>
             <tbody>
               <tr>
                 <td>
@@ -70,16 +70,10 @@
       </table>
 
       <table class="comment_table">
-        <tbody>
-          <tr>
-            <td>
-              <%= form_with(model:[@book,@comment],local: true) do |f| %>
-                <%= f.text_area :comment, class:"comment_field",placeholder:'コメントはここに' %><br>
-                <%= f.submit "送信する" %>
-              <% end %>
-            </th>
-          </tr>
-        </tbody>
+        <%= form_with(model:[@book,@comment],local: true) do |f| %>
+          <%= f.text_area :comment, class:"comment_field",placeholder:'コメントはここに' %><br>
+          <%= f.submit "送信する" %>
+        <% end %>
       </table>
 
     </div>
