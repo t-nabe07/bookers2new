@@ -2,12 +2,12 @@ class Book < ApplicationRecord
 
   #attachment :profile_image
   belongs_to :user
-  has_many :fovorites, dependent: :destroy
+  has_many :favorites, dependent: :destroy
 
   validates :title, presence: true
   validates :body, presence: true, length: { maximum: 200 }
 
-  def favorited?(user)
+  def favorited_by?(user)
     favorites.where(user_id: user.id).exists?
   end
 
