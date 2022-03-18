@@ -41,7 +41,7 @@
                 <%= link_to book.favorites.count, book_favorites_path(book.id), method: :post, class:"fas fa-heart heart_blue" %>
               <% end %>
             </td>
-            <td>コメント</td>
+            <td>コメント<%= book.comments.count %>件</td>
           </tr>
         </tbody>
         <% end %>
