@@ -1,2 +1,33 @@
-<h1>Relationships#followings</h1>
-<p>Find me in app/views/relationships/followings.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-md-10 my-3">
+      <h2>Followings User List</h2>
+      <table class="table">
+        <thead>
+          <tr>
+            <th>Image</th>
+            <th>Name</th>
+            <th>フォロー数</th>
+            <th>フォロワー数</th>
+            <th></th>
+          </tr>
+        </thead>
+        <% if @user.present? %>
+          <% @users.each do |user| %>
+            <tbody>
+              <tr>
+                <td><%= attachment_image_tag user,:profile_image, size:'50x50', format:'jpeg',fallback:"no_image.jpg" %></td>
+                <td><%= user.name %></td>
+                <td><%= user.followings.count %>人</td>
+                <td><%= user.followers.count %>人</td>
+                <td><%= link_to "Show", user_path(user.id) %></td>
+              </tr>
+            </tbody>
+          <% end %>
+        <% else %>
+          <table>あなたがフォローしている人はいません。</table>
+        <% end %>
+      </table>
+    </div>
+  </div>
+</div>
