@@ -34,12 +34,8 @@
               </td>
             <td><%= link_to book.title, book_path(book.id) %></td>
             <td><%= book.body %></td>
-            <td>
-              <% if book.favorited_by?(current_user) %>
-                <%= link_to book.favorites.count, book_favorites_path(book.id), method: :delete, class:"fas fa-heart heart_red" %>
-              <% else %>
-                <%= link_to book.favorites.count, book_favorites_path(book.id), method: :post, class:"fas fa-heart heart_blue" %>
-              <% end %>
+            <td class="favo_button">
+              <%= render partial: "favorites/favorite", locals: {book: book} %>
             </td>
             <td>コメント<%= book.comments.count %>件</td>
           </tr>
